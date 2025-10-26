@@ -1,6 +1,4 @@
-// Deterministic record generator by index.
-// No external libs; names/emails/phones derived from index to be consistent.
-// This allows generating arbitrary pages without storing full array.
+// Deterministic synthetic record generator. Same index => same record.
 import Avtar from "../assets/test-user.svg";
 const firstNames = [
   "Aarav","Vivaan","Aditya","Vihaan","Arjun","Karan","Rohan","Ananya","Saanvi","Ishaan",
@@ -24,15 +22,16 @@ function genEmail(name, idx) {
   return `${name.toLowerCase().replace(/\s+/g, ".")}${idx % 1000}@example.com`;
 }
 
+// Create one record for index `idx`.
 export function generateRecord(idx) {
-  // idx is 0-based
   const fn = pick(firstNames, idx);
+  // different stride for last names to mix combinations
   const ln = pick(lastNames, Math.floor(idx / firstNames.length));
   const name = `${fn} ${ln}`;
   const email = genEmail(`${fn}.${ln}`, idx);
   const phone = genPhone(idx);
-  const score = (idx * 37) % 101; // pseudo-random 0-100
-  const lastMessageAt = new Date(2024, 0, 1 + (idx % 365)).toISOString(); // synthetic date
+  const score = (idx * 37) % 101; // 0-100 deterministic
+  const lastMessageAt = new Date(2024, 0, 1 + (idx % 365)).toISOString();
   const addedBy = pick(["admin", "system", "sales1", "sales2"], idx);
   const avatar = Avtar;
   return {
@@ -46,8 +45,7 @@ export function generateRecord(idx) {
     avatar
   };
 }
-
-// Generate a page of size `pageSize` at pageIndex (0-based)
+// Generate a page of size -"pageSize" at pageIndex (0-based)
 export function generatePage(pageIndex, pageSize) {
   const start = pageIndex * pageSize;
   const arr = new Array(pageSize);
@@ -57,5 +55,5 @@ export function generatePage(pageIndex, pageSize) {
   return arr;
 }
 
-// Constant total records
+// Synthetic total number of records (used for pagination)
 export const TOTAL_RECORDS = 1_000_000;

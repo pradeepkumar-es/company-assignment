@@ -1,4 +1,3 @@
-import React from "react";
 import CustomerTable from "./components/CustomerTable.jsx";
 import companyLogo from "./assets/doubletick-logo.png"
 export default function App() {

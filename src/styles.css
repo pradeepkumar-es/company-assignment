@@ -1,3 +1,4 @@
+/* Theme variables */
 :root {
   --bg: #f7f8fa;
   --card: #fff;
@@ -6,9 +7,11 @@
   --border: #e6e9ee;
 }
 
+/* Reset / base */
 * {
   box-sizing: border-box;
 }
+/* Page */
 body {
   margin: 0;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
@@ -20,19 +23,22 @@ body {
   padding: 24px;
 }
 
+/* Header / branding */
 .app-header {
   display: flex;
-  flex-direction: column;  /* stacks logo above subtitle */
-  align-items:start;     /* centers both horizontally */
+  flex-direction: column;
+  align-items:start;     
   margin-bottom: 12px;
 }
 
+/* Logo */
 .app-logo {
-  width: 140px;            /* adjust as needed */
-  height: auto;            /* maintains aspect ratio */
+  width: 140px;     
+  height: auto;           
   margin-bottom: 6px;
 }
 
+/* Main table card */
 .table-wrapper {
   background: var(--card);
   border: 1px solid var(--border);
@@ -43,6 +49,7 @@ body {
   margin: 0 auto;
 }
 
+/* Controls row (search, filters, counters) */
 .controls {
   display: flex;
   align-items: center;
@@ -55,6 +62,7 @@ body {
   gap: 8px;
   align-items: center;
 }
+/* Search input + icon */
 .search-wrapper {
   position: relative;
   display: inline-block;
@@ -79,9 +87,11 @@ body {
   font-size: 14px;
 }
 
+/* Filters dropdown */
 .filters {
   position: relative;
 }
+/* Filter button */
 .filter-btn {
   padding: 8px 10px;
   border-radius: 6px;
@@ -99,6 +109,7 @@ body {
   vertical-align: middle;
 }
 
+/* Filter dropdown panel */
 .filter-dropdown {
   position: absolute;
   left: 0;
@@ -120,11 +131,13 @@ body {
   font-size: 13px;
 }
 
+/* Count / meta text */
 .count {
   color: var(--muted);
   font-size: 13px;
 }
 
+/* Scrollable table area */
 .table-container {
   height: 520px; /* scrollable area */
   overflow: auto;
@@ -133,6 +146,7 @@ body {
   margin-bottom: 8px;
 }
 
+/* Customers table */
 .customers-table {
   width: 100%;
   border-collapse: collapse;
@@ -157,6 +171,7 @@ body {
 .customers-table tr:hover {
   background: #fbfdff;
 }
+/* Avatar image in table */
 .customers-table .avatar {
   width: 36px;
   height: 36px;
@@ -166,11 +181,13 @@ body {
   object-fit: cover;
   border: 1px solid #eee;
 }
+/* Name cell layout */
 .name-cell {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+/* Small-muted text */
 .small {
   color: var(--muted);
   font-size: 12px;
